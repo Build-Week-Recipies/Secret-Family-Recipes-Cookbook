@@ -6,6 +6,9 @@ import styled from 'styled-components';
 let nav = {
     logOut: true,
     add: true,
+    login: false,
+    signUp: false,
+    home: false
 }
 
 const Dashboard = () => {
