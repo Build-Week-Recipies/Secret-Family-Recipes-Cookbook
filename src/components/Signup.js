@@ -14,9 +14,14 @@ const SignUp = () => {
         const value = e.target.value;
         setCredentials({[name]: value});
     }
+
+    const submitHandler = e => {
+        e.preventDefault();
+        // axios call to put user info, push to './login'
+    }
     return (
         <div>
-            <form>
+            <form onSubmit={submitHandler}>
                 <label>
                     <input type='text' name='first_name' value={credentials.first_name} onChange={changeHandler} placeholder='First Name:' />
                 </label>
