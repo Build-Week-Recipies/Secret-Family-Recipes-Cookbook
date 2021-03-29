@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const SignUp = () => {
+    const initialValues = {
+        first_name: '',
+        last_name: '',
+        username: '',
+        password: ''
+    }
+    const [credentials, setCredentials] = useState(initialValues);
+
+    const changeHandler = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setCredentials({[name]: value});
+    }
     return (
         <div>
             <form>
                 <label>
-                    <input type='text' name='first_name' placeholder='First Name:' />
+                    <input type='text' name='first_name' value={credentials.first_name} onChange={changeHandler} placeholder='First Name:' />
                 </label>
                 <label>
-                    <input type='text' name='last_name' placeholder='Last Name:' />
+                    <input type='text' name='last_name' value ={credentials.last_name} onChange={changeHandler} placeholder='Last Name:' />
                 </label>
                 <label>
-                    <input type='text' name='username' placeholder='Username:' />
+                    <input type='text' name='username' value={credentials.username} onChange={changeHandler} placeholder='Username:' />
                 </label>
                 <label>
-                    <input type='password' name='password' placeholder='Password:' />
+                    <input type='password' name='password' value={credentials.password} onChange={changeHandler} placeholder='Password:' />
                 </label>
             </form>
         </div>
