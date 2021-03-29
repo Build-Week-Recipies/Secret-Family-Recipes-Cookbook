@@ -2,9 +2,8 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#bgImg {
+  background-image: url("./assets/bg.jpg");
 }
 
 @media (prefers-reduced-motion: no-preference) {
