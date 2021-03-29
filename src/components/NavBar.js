@@ -1,8 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Signup from './Signup';
-import Login from './Login';
-import HomePage from './HomePage';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
