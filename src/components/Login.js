@@ -13,15 +13,21 @@ const Login = () => {
         setCredentials({[name]: value});
     }
 
+    const loginHandler = e => {
+        e.preventDefault();
+        // axios call with token, push to dashboard
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={loginHandler}>
                 <label>
                     <input type='text' name='username' value={credentials.username} onChange={changeHandler} placeholder='Username:' />
                 </label>
                 <label>
                     <input type='password' name='password' value ={credentials.password} onChange={changeHandler} placeholder='Password:' />
                 </label>
+                <button>Log In</button>
             </form>
         </div>
     )
