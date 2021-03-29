@@ -4,6 +4,12 @@
 
 #bgImg {
   background-image: url("./assets/bg.jpg");
+  z-index: -1;
+}
+
+.navName {
+  flex-grow: 1;
+  text-align: left;
 }
 
 @media (prefers-reduced-motion: no-preference) {
