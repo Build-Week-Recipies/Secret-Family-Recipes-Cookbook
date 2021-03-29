@@ -34,6 +34,7 @@ const SignUp = () => {
                 <label>
                     <input type='password' name='password' value={credentials.password} onChange={changeHandler} placeholder='Password:' />
                 </label>
+                <button>Submit</button>
             </form>
         </div>
     )
