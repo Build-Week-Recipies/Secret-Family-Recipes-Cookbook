@@ -5,10 +5,10 @@ const Login = () => {
         <div>
             <form>
                 <label>
-                    <input type='text' placeholder='Username:' />
+                    <input type='text' name='username' placeholder='Username:' />
                 </label>
                 <label>
-                    <input type='password' placeholder='Password:' />
+                    <input type='password' name='password' placeholder='Password:' />
                 </label>
             </form>
         </div>
