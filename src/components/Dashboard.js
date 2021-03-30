@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from './NavBar';
 import styled from 'styled-components';
 import RecipeList from './RecipeList'
@@ -103,7 +103,6 @@ const Dashboard = () => {
 
     return (
         <Dashboard>
-            <NavBar display={nav} />
             <Background ><div id="bgImg"></div><p>Old Recepies For Old People</p></Background>
             <RecipeList />
         </Dashboard>
