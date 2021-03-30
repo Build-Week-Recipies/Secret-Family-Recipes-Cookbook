@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const SignupDiv = styled.div`
+    width: 80vw;
+    margin: 10% 0 0 5%;
+`;
 
 const SignUp = () => {
     const initialValues = {
@@ -20,7 +26,7 @@ const SignUp = () => {
         // axios call to put user info, push to './login'
     }
     return (
-        <div>
+        <SignupDiv>
             <h2>Sign Up:</h2>
             <form onSubmit={submitHandler}>
                 <label>
@@ -37,7 +43,7 @@ const SignUp = () => {
                 </label>
                 <button>Submit</button>
             </form>
-        </div>
+        </SignupDiv>
     )
 }
 
