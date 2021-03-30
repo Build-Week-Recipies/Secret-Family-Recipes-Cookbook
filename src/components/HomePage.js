@@ -1,11 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+import '../App.css';
 
+
+const HomeDiv = styled.div`
+    width: 80vw;
+    margin: 5% 0 0 5%;
+`;
 
 const HomePage = () => {
     return (
-        <div>
+        <HomeDiv>
             <h1>Secret Family Recipes Cookbook</h1>
-        </div>
+            <p>The little cards my grandma wrote the recipes on in her beautiful cursive are getting lost or are hard to read. I need somewhere secure to keep my recipes with me at all times!</p>
+        </HomeDiv>
     )
 }
 

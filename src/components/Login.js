@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const LoginDiv = styled.div`
+    width: 80vw;
+    margin: 10% 0 0 5%;
+`;
 
 const Login = () => {
     const initialValues = {
@@ -19,7 +25,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <LoginDiv>
             <h2>Log In:</h2>
             <form onSubmit={loginHandler}>
                 <label>
@@ -30,7 +36,7 @@ const Login = () => {
                 </label>
                 <button>Log In</button>
             </form>
-        </div>
+        </LoginDiv>
     )
 }
 
