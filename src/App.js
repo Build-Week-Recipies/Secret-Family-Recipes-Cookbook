@@ -12,13 +12,15 @@ let nav = {
   signUp: true,
   home: true,
   add: false,
-  logOut: false
+  logOut: false,
+  dashboard: true
 }
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <NavBar display={nav} />
         <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/register' component={Signup} />
         <Route exact path='/login' component={Login} />

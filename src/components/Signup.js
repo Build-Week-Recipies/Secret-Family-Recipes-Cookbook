@@ -21,6 +21,7 @@ const SignUp = () => {
     }
     return (
         <div>
+            <h2>Sign Up:</h2>
             <form onSubmit={submitHandler}>
                 <label>
                     <input type='text' name='first_name' value={credentials.first_name} onChange={changeHandler} placeholder='First Name:' />

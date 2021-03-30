@@ -307,7 +307,7 @@ input[type="button"] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: var(--text-color-softer);
+  color: rgb(134, 64, 64);
   text-align: center;
   font-size: 11px;
   font-weight: 600;
@@ -332,8 +332,8 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  color: var(--text-color-normal);
-  border-color: var(--text-color-softer);
+  color: rgb(134, 64, 64);
+  border-color: rgb(134, 64, 64);
   outline: 0;
 }
 .button.button-primary,
@@ -374,8 +374,8 @@ select {
   height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: var(--background-color);
-  border: 1px solid var(--border-color-softer);
-  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
   box-shadow: none;
   box-sizing: border-box;
 }
@@ -408,7 +408,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid var(--accent-color);
+  border: 1px solid rgb(134, 64, 64);
   outline: 0;
 }
 label,
