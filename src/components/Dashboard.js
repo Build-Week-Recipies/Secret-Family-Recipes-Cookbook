@@ -90,7 +90,7 @@ const Dashboard = () => {
         width: 60vw;
         margin: 0;
         padding: 20px;
-        left: 40vw;
+        left: 39vw;
         top: 30px;
         box-sizing: border-box;
     }
