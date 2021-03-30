@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+
+import '../App.css';
+
+//styles
+const StyledLink = styled(Link)`
+    color: rgb(134, 64, 64);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+`;
+//end styles
 
 
 // const initialDisplay = {
@@ -15,30 +23,51 @@ import Button from '@material-ui/core/Button';
 //     home: false,
 // }
 
+
 const NavBar = (props) => {
+    useEffect(() => {
+    //animation styles
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('nav-active');
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        link.style.animation = `navLinkFade .5s ease forwards ${index / 7 + .5}s`;
+                    }
+                })
+                burger.classList.toggle('toggle');
+            })
+        }
+        navSlide();
+        //end styles
+    }, [])
+
     const { display } = props;
     const [show] = useState(display)
-
+    
     return (
-        <div >
-            <AppBar id="navbar" >
-                <Toolbar>
-                    <Typography variant="h6" className="navName">
-                        Secret Recipies
-          </Typography>
-                    {show.home === true && <Button color="inherit"> <Link to='/'>Home</Link></Button>}
-                    {show.add === true && <Button color="inherit"> <Link to='/dashboard/add'>Add</Link></Button>}
-                    {show.signUp === true && <Button color="inherit"> < Link to='/signup'>Sign Up</Link></Button>}
-                    {show.login === true && <Button color="inherit"> <Link to='/login'>Login</Link></Button>}
-                    {show.logOut === true && <Button color="inherit"> <Link to='/'>Log Out</Link></Button>}
-                </Toolbar>
-            </AppBar>
 
-
-
-
-
-
+        <div>
+            <nav>
+                <ul className='nav-links'>
+                    <li>{show.home === true && <StyledLink to='/'>Home</StyledLink>}</li>
+                    <li>{show.signUp === true && < StyledLink to='/signup'>Sign Up</StyledLink>}</li>
+                    <li>{show.login === true && <StyledLink to='/login'>Login</StyledLink>}</li>
+                    <li>{show.add === true && <StyledLink to='/dashboard/add'>Add</StyledLink>}</li>
+                    <li>{show.logOut === true && <StyledLink to='/'>Log Out</StyledLink>}</li>
+                </ul>
+                <div className='burger'>
+                    <div className='line1'></div>
+                    <div className='line2'></div>
+                    <div className='line3'></div>
+                </div>
+            </nav>
         </div >
     )
 }

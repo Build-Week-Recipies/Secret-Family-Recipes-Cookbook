@@ -7,6 +7,9 @@ import RecipeList from './RecipeList'
 let nav = {
     logOut: true,
     add: true,
+    login: false,
+    signUp: false,
+    home: false
 }
 
 const Dashboard = () => {
