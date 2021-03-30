@@ -20,8 +20,8 @@ const NavBar = (props) => {
     const [show] = useState(display)
 
     return (
-        <div>
-            <AppBar position="static">
+        <div >
+            <AppBar id="navbar" >
                 <Toolbar>
                     <Typography variant="h6" className="navName">
                         Secret Recipies
