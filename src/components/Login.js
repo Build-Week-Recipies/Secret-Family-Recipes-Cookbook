@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import styled from 'styled-components';
-import NavBar from './components/NavBar';
+import NavBar from './NavBar';
 
 const Background = styled.div`
     display: flex;

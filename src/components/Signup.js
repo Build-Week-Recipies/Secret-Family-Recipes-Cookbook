@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import NavBar from './components/NavBar';
+import NavBar from './NavBar';
 
 const SignupDiv = styled.div`
     width: 80vw;

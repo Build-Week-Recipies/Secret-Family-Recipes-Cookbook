@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../App.css';
-import NavBar from './components/NavBar';
+import NavBar from './NavBar';
 
 
 const HomeDiv = styled.div`
