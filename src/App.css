@@ -36,6 +36,17 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
 }
 
+#signupImg {
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/signup.jpg");
+  background-position: center;
+  z-index: -2;
+  object-fit: fill;
+  filter: brightness(70%);
+  position: absolute;
+}
+
 #navbar {
   z-index: 2;
 }
