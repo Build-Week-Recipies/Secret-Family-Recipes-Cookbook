@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 import '../App.css';
 
 //styles
@@ -11,6 +12,7 @@ const StyledLink = styled(Link)`
     font-weight: bold;
 `;
 //end styles
+
 
 // const initialDisplay = {
 //     login: false,
@@ -50,6 +52,7 @@ const NavBar = (props) => {
     const [show] = useState(display)
     
     return (
+
         <div>
             <nav>
                 <ul className='nav-links'>
