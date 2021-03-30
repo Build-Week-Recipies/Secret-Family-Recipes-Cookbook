@@ -8,7 +8,7 @@ const RecipeList = () => {
         <div id="list">
             {data.map(
                 recipe => {
-                    return <Link key={Date.now()}><h3>{recipe.title}</h3><p>{recipe.instructions}</p></Link>
+                    return <Link className="listUnit" key={Date.now()}><h5>{recipe.title}</h5><p>Category: {recipe.category}</p></Link>
                 })}
         </div>
     )
