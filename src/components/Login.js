@@ -20,6 +20,7 @@ const Login = () => {
 
     return (
         <div>
+            <h2>Log In:</h2>
             <form onSubmit={loginHandler}>
                 <label>
                     <input type='text' name='username' value={credentials.username} onChange={changeHandler} placeholder='Username:' />
