@@ -18,7 +18,7 @@ const Dashboard = () => {
     align-items: center;
     justify-content: center;
     width: 40vw;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     left: 0;
     top: 0;
@@ -87,10 +87,17 @@ const Dashboard = () => {
 
     const Dashboard = styled.div`
     #list {
-        position: sticky;
+        position: absolute;
         width: 60vw;
         margin: 0;
-        padding: 0;
+        padding: 20px;
+        left: 40vw;
+        top: 30px;
+        box-sizing: border-box;
+    }
+
+    .listUnit {
+        color: black;
     }
     `
 
