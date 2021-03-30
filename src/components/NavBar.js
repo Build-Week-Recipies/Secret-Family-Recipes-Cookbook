@@ -38,7 +38,7 @@ const NavBar = (props) => {
                     if (link.style.animation) {
                         link.style.animation = '';
                     } else {
-                        link.style.animation = `navLinkFade .5s ease forwards ${index / 7 + .5}s`;
+                        link.style.animation = `navLinkFade .3s ease forwards ${index / 7 + .3}s`;
                     }
                 })
                 burger.classList.toggle('toggle');
