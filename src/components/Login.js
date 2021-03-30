@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import styled from 'styled-components';
+import NavBar from './components/NavBar';
 
 const Background = styled.div`
     display: flex;
@@ -96,7 +97,7 @@ const Login = () => {
     const changeHandler = e => {
         const name = e.target.name;
         const value = e.target.value;
-        setCredentials({[name]: value});
+        setCredentials({ [name]: value });
     }
 
     const loginHandler = e => {
@@ -104,17 +105,27 @@ const Login = () => {
         // axios call with token, push to dashboard
     }
 
+    let nav = {
+        login: true,
+        signUp: true,
+        home: true,
+        add: false,
+        logOut: false,
+        dashboard: true
+    }
+
     return (
         <div>
             <Background><div id='loginImg'></div></Background>
             <LoginDiv>
+                <NavBar display={nav} />
                 <h2>Log In:</h2>
                 <form onSubmit={loginHandler}>
                     <label>
                         <input type='text' name='username' value={credentials.username} onChange={changeHandler} placeholder='Username:' />
                     </label>
                     <label>
-                        <input type='password' name='password' value ={credentials.password} onChange={changeHandler} placeholder='Password:' />
+                        <input type='password' name='password' value={credentials.password} onChange={changeHandler} placeholder='Password:' />
                     </label>
                     <button>Log In</button>
                 </form>

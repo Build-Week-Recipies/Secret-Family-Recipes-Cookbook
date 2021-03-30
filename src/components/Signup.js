@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import NavBar from './components/NavBar';
 
 const SignupDiv = styled.div`
     width: 80vw;
@@ -18,22 +19,33 @@ const SignUp = () => {
     const changeHandler = e => {
         const name = e.target.name;
         const value = e.target.value;
-        setCredentials({[name]: value});
+        setCredentials({ [name]: value });
     }
 
     const submitHandler = e => {
         e.preventDefault();
         // axios call to put user info, push to './login'
     }
+
+    let nav = {
+        login: true,
+        signUp: true,
+        home: true,
+        add: false,
+        logOut: false,
+        dashboard: true
+    }
+
     return (
         <SignupDiv>
+            <NavBar display={nav} />
             <h2>Sign Up:</h2>
             <form onSubmit={submitHandler}>
                 <label>
                     <input type='text' name='first_name' value={credentials.first_name} onChange={changeHandler} placeholder='First Name:' />
                 </label>
                 <label>
-                    <input type='text' name='last_name' value ={credentials.last_name} onChange={changeHandler} placeholder='Last Name:' />
+                    <input type='text' name='last_name' value={credentials.last_name} onChange={changeHandler} placeholder='Last Name:' />
                 </label>
                 <label>
                     <input type='text' name='username' value={credentials.username} onChange={changeHandler} placeholder='Username:' />
