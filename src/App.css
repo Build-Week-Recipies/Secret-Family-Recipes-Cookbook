@@ -2,9 +2,85 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  overflow-x: hidden;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgb(134, 64, 64);
+  font-family: 'Antic', sans-serif;
+}
+
+#bgImg {
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/bg.jpg");
+  z-index: -2;
+  filter: brightness(70%);
+  position: absolute;
+}
+
+#addImg {
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/02.jpg");
+  z-index: -2;
+  filter: brightness(70%);
+  position: absolute;
+}
+
+#loginImg {
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/login.jpg");
+  z-index: -2;
+  object-fit: cover;
+  filter: brightness(70%);
+  position: absolute;
+}
+
+#signupImg {
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/signup.jpg");
+  background-position: center;
+  z-index: -2;
+  object-fit: fill;
+  filter: brightness(70%);
+  position: absolute;
+}
+
+#homeImg {
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/vector-creator.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -2;
+  position: absolute;
+  background-position: bottom;
+  left: 0;
+}
+
+#navbar {
+  z-index: 2;
+}
+
+.navName {
+  flex-grow: 1;
+  text-align: left;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -35,4 +111,73 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  width: 10vw;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  padding: 10px;
+  z-index: 5;
+}
+
+.nav-links {
+  display: flex;
+  width: 11vw;
+  justify-content: space-around;
+  color: rgb(134, 64, 64);
+  position: absolute;
+  right: 0px;
+  height: 92vh;
+  top: 8vh;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in;
+}
+
+.nav-links li {
+  list-style: none;
+  opacity: 0;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(134, 64, 64);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.burger {
+  cursor: pointer;
+}
+
+.nav-active {
+  transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
