@@ -7,6 +7,11 @@ import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
+function truncate(str, n) {
+    return (str.length > n) ? str.substr(0, n - 1) + '...' : str;
+};
+
+
 const useStyles = makeStyles((theme) => ({
 
 
@@ -57,7 +62,14 @@ const RecipeList = () => {
             </div>
             {data.map(
                 (recipe, i) => {
-                    return <Link to="recipe/1" className="listUnit" key={i}><h5>{recipe.title}</h5><p>Category: {recipe.category}</p></Link>
+                    return (<Link to="recipe/1" className="listUnit" key={i}>
+                        <div>
+                            <h5>{recipe.title}</h5>
+                            <p>Instructions: {truncate(recipe.instructions, 100)}</p>
+                            <p>By: {recipe.source}</p>
+                            <p>Category: {recipe.category}</p>
+                        </div>
+                    </Link>)
                 })}
         </div>
     )

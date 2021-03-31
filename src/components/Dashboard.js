@@ -89,9 +89,18 @@ const DashboardDiv = styled.div`
         position: absolute;
         width: 65vw;
         margin: 0;
-        padding: 20px;
+        padding: 20px 16vw;
         left: 32vw;
         box-sizing: border-box;
+    }
+
+    .listUnit div{
+        background-color: #fffaf0;
+        border-radius: 3px;
+        padding: 15px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 1px solid #f5d390;
     }
 
     #searchDiv {

@@ -94,7 +94,7 @@ const EditDiv = styled.div`
     box-sizing: border-box;
     display: initial;
 
-    #addTextArea {
+    #editTextArea {
         width: 216px;
         max-width: 350px;
         max-height: 200px;
