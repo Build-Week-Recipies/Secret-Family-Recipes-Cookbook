@@ -36,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 const RecipeList = () => {
+    //axios GET when component renders
+    
     const classes = useStyles();
 
     const handleSearch = (e) => {
