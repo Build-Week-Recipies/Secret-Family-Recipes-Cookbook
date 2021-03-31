@@ -89,7 +89,7 @@ const DashboardDiv = styled.div`
         position: absolute;
         width: 65vw;
         margin: 0;
-        padding: 20px;
+        padding: 20px 16vw;
         left: 32vw;
         box-sizing: border-box;
     }
