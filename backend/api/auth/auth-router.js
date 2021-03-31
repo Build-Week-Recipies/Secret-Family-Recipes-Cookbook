@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const bcryptjs = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const db = require('../../data/dbConfig');
 const { checkValidBody, checkUsernameAvailable, buildToken } = require('./auth-middleware');
 
@@ -20,7 +20,7 @@ router.post(
           .first();
         const token = buildToken(user);
         const registered = {
-          id: user.id,
+          user_id: user.user_id,
           username: user.username
         };
         res.status(201).json({ message: `Welcome ${registered.username}!`, token, registered });
@@ -38,7 +38,7 @@ router.post(
 
         try {
             const user = await db("users").where("username", username).first();
-            if (user && bcryptjs.compareSync(password, user.password)) {
+            if (user && bcrypt.compareSync(password, user.password)) {
                 const token = buildToken(user);
                 res.status(200).json({message: `welcome, ${username}`, token});
             } else {
