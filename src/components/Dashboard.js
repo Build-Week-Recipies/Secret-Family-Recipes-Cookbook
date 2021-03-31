@@ -16,7 +16,7 @@ const Dashboard = () => {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 40vw;
+    width: 35vw;
     height: 100%;
     position: fixed;
     left: 0;
@@ -24,7 +24,8 @@ const Dashboard = () => {
     color: white;
 
 @media (min-width: 100px) {
-    position: relative;
+    position: absolute;
+    display: none; 
     width: 100vw;
     height: 50vh;
     #bgImg {
@@ -43,7 +44,7 @@ const Dashboard = () => {
 @media (min-width: 550px) {
     
     width: 100vw;
-    height: 40vh;
+    height: 35vh;
     #bgImg {
         background-size: 750px;
     }
@@ -60,8 +61,9 @@ const Dashboard = () => {
 /* Larger than desktop */
 
 @media (min-width: 800px) {
+    display: flex;
     position: fixed;
-    width: 40vw;
+    width: 35vw;
     height: 100vh;
     #bgImg {
             background-size: 500px;
@@ -72,7 +74,7 @@ const Dashboard = () => {
 
 @media (min-width: 1200px) {
     #bgImg {
-            background-size: 800px;
+            background-size: 600px;
         }
 }
 
@@ -87,12 +89,22 @@ const Dashboard = () => {
     const Dashboard = styled.div`
     #list {
         position: absolute;
-        width: 60vw;
+        width: 65vw;
         margin: 0;
         padding: 20px;
-        left: 39vw;
-        top: 30px;
+        left: 34vw;
         box-sizing: border-box;
+    }
+
+    #searchDiv {
+        display: flex;
+        justify-content:center;
+        width: 100%;
+
+    }
+
+    #search {
+        border: none;
     }
 
     .listUnit {
