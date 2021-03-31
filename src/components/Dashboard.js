@@ -8,9 +8,7 @@ let nav = {
     add: true,
 }
 
-const Dashboard = () => {
-
-    const Background = styled.div`
+const Background = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -86,13 +84,13 @@ const Dashboard = () => {
 
     `
 
-    const Dashboard = styled.div`
+const DashboardDiv = styled.div`
     #list {
         position: absolute;
         width: 65vw;
         margin: 0;
         padding: 20px;
-        left: 34vw;
+        left: 32vw;
         box-sizing: border-box;
     }
 
@@ -111,13 +109,16 @@ const Dashboard = () => {
         color: black;
     }
     `
+const Dashboard = () => {
+
+
 
     return (
-        <Dashboard>
+        <DashboardDiv>
             <NavBar display={nav} />
             <Background ><div id="bgImg"></div><p>Old Recepies For Old People</p></Background>
             <RecipeList />
-        </Dashboard>
+        </DashboardDiv>
     )
 }
 
