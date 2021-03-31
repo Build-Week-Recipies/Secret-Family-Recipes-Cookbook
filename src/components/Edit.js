@@ -19,14 +19,14 @@ const Background = styled.div`
 @media (min-width: 100px) {
     width: 100vw;
     height: 50vh;
-    #addImg {
+    #editImg {
 
     display: none;
     }
 }
 
 @media (min-width: 400px) {
-    #addImg {
+    #editImg {
     display: none;
     }
 }
@@ -36,7 +36,7 @@ const Background = styled.div`
     
     width: 100vw;
     height: 40vh;
-    #addImg {
+    #editImg {
         display: none;
     }
 }
@@ -44,7 +44,7 @@ const Background = styled.div`
 /* Larger than tablet */
 
 @media (min-width: 750px) {
-    #addImg {
+    #editImg {
         display: none;
     }
 }
@@ -55,30 +55,36 @@ const Background = styled.div`
     position: fixed;
     width: 40vw;
     height: 100vh;
-    #addImg {
-            background-size: 600px;
+    #editImg {
+            background-size: 400px;
             display: initial;
         }  
 }
 
+@media (min-width: 1024px) {
+    #editImg {
+            background-size: 550px;
+          
+        }
+}
 /* Larger than Desktop HD */
 
 @media (min-width: 1200px) {
-    #addImg {
+    #editImg {
             background-size: 700px;
           
         }
 }
 
 @media (min-width: 1900px) {
-    #addImg {
-            background-size: 1000px;
+    #editImg {
+            background-size: 900px;
         }
 }
 
     `
 
-const AddDiv = styled.div`
+const EditDiv = styled.div`
     position: absolute;
     width: 60vw;
     margin: 0;
@@ -146,7 +152,7 @@ const AddDiv = styled.div`
 }
 `;
 
-const Add = () => {
+const Edit = () => {
     const initialValues = {
         title: '',
         source: '',
@@ -162,9 +168,9 @@ const Add = () => {
         setRecipe({ ...recipe, [name]: value });
     }
 
-    const addHandler = e => {
+    const editHandler = e => {
         e.preventDefault();
-        // axios call to add a new item
+        // axios call to edit a new item
     }
 
     let nav = {
@@ -174,11 +180,11 @@ const Add = () => {
 
     return (
         <div className="container">
-            <Background><div id='addImg'></div></Background>
-            <AddDiv>
+            <Background><div id='editImg'></div></Background>
+            <EditDiv>
                 <NavBar display={nav} />
-                <h2>Add a New Recipe:</h2>
-                <form onSubmit={addHandler}>
+                <h2>Edit The Recipe:</h2>
+                <form onSubmit={editHandler}>
                     <label>
                         <input type='text' name='title' value={recipe.title} onChange={changeHandler} placeholder='Title:' />
                     </label>
@@ -192,13 +198,13 @@ const Add = () => {
                         <input type='text' name='category' value={recipe.category} onChange={changeHandler} placeholder='Category:' />
                     </label>
                     <label>
-                        <textarea type='text' id="addTextArea" name='instructions' value={recipe.instructions} onChange={changeHandler} placeholder='Instructions:' />
+                        <textarea type='text' id="editTextArea" name='instructions' value={recipe.instructions} onChange={changeHandler} placeholder='Instructions:' />
                     </label>
-                    <button>Add</button>
+                    <button>Edit</button>
                 </form>
-            </AddDiv>
+            </EditDiv>
         </div>
     )
 }
 
-export default Add;
+export default Edit;

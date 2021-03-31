@@ -1,15 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import data from '../dummyData/data'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import DirectionsIcon from '@material-ui/icons/Directions';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -37,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 const RecipeList = () => {
     //axios GET when component renders
-    
+
     const classes = useStyles();
 
     const handleSearch = (e) => {
@@ -60,8 +56,8 @@ const RecipeList = () => {
                 </Paper>
             </div>
             {data.map(
-                recipe => {
-                    return <Link className="listUnit" key={Date.now()}><h5>{recipe.title}</h5><p>Category: {recipe.category}</p></Link>
+                (recipe, i) => {
+                    return <Link to="recipe/1" className="listUnit" key={i}><h5>{recipe.title}</h5><p>Category: {recipe.category}</p></Link>
                 })}
         </div>
     )
