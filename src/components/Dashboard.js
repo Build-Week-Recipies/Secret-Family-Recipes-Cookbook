@@ -94,6 +94,15 @@ const DashboardDiv = styled.div`
         box-sizing: border-box;
     }
 
+    .listUnit div{
+        background-color: #fffaf0;
+        border-radius: 3px;
+        padding: 15px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 1px solid #f5d390;
+    }
+
     #searchDiv {
         display: flex;
         justify-content:center;
