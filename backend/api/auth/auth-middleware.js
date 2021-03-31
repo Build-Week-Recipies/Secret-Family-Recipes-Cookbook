@@ -14,9 +14,9 @@ function checkValidBody(req, res, next) {
     const action = req.url;
 
     if ( action === "/register" && (!username || !password)) {
-        res.status(422).json({message: "username and password required"});
+        res.status(422).json({message: "username and password required for registration"});
     } else if (action === "/login" && (!username || !password)) {
-        res.status(422).json({message: "username and password required"})
+        res.status(422).json({message: "username and password required for login"})
     } else if (typeof password !== "string") {
         res.status(422).json({message: "password must be a string"})
     } else {
@@ -38,7 +38,7 @@ async function checkUsernameAvailable(req, res, next) {
 
 function buildToken(user) {
     const payload = {
-      subject: user.id,
+      subject: user.user_id,
       username: user.username,
     };
     const config = {
