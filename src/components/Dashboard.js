@@ -101,6 +101,14 @@ const DashboardDiv = styled.div`
         margin-bottom: 20px;
         box-sizing: border-box;
         border: 1px solid #f5d390;
+        
+        .primary {
+            
+        }
+        .secondary {
+            margin: 0;
+            font-size: 1.2rem; 
+        }
     }
 
     #searchDiv {
