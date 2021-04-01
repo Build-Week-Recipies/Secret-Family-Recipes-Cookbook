@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import '../App.css';
 import styled from 'styled-components';
 import NavBar from './NavBar';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router';
+import { editRecipe } from '../store/actions';
 
 const Background = styled.div`
     display: flex;
@@ -94,8 +97,13 @@ const EditDiv = styled.div`
     box-sizing: border-box;
     display: initial;
 
+    input {
+        width: 300px;
+        height: 50px; 
+    }
+
     #editTextArea {
-        width: 216px;
+        width: 300px;
         max-width: 350px;
         max-height: 200px;
     }
@@ -152,14 +160,10 @@ const EditDiv = styled.div`
 }
 `;
 
-const Edit = () => {
-    const initialValues = {
-        title: '',
-        source: '',
-        ingredients: '',
-        instructions: '',
-        category: '',
-    }
+const Edit = (props) => {
+    const { editRecipe } = props;
+    const { id } = useParams()
+    const initialValues = props.recipes.filter(recipe => recipe.id === parseInt(id))[0];
     const [recipe, setRecipe] = useState(initialValues);
 
     const changeHandler = e => {
@@ -170,7 +174,7 @@ const Edit = () => {
 
     const editHandler = e => {
         e.preventDefault();
-        // axios call to edit a new item
+        // editRecipe(id, recipe)
     }
 
     let nav = {
@@ -200,11 +204,17 @@ const Edit = () => {
                     <label>
                         <textarea type='text' id="editTextArea" name='instructions' value={recipe.instructions} onChange={changeHandler} placeholder='Instructions:' />
                     </label>
-                    <button>Edit</button>
+                    <button >Edit</button>
                 </form>
             </EditDiv>
         </div>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        recipes: state.recipes,
 
-export default Edit;
+    }
+}
+
+export default connect(mapStateToProps, { editRecipe })(Edit);

@@ -24,11 +24,23 @@ export const fetchData = () => {
 }
 
 export const deleteRecipe = (id) => {
-    axiosWithAuth()
-        .delete(`https://secret-family-recipes2021.herokuapp.com/api/auth/recipes/${id}`)
-        .then((res) => {
-            console.log(res.data);
-        }).catch((err) => {
-            console.log(err);
-        })
+    // axiosWithAuth()
+    //     .delete(`https://secret-family-recipes2021.herokuapp.com/api/recipes/${id}`)
+    //     .then((res) => {
+    //         console.log(res.data);
+    //     }).catch((err) => {
+    //         console.log(err);
+    //     })
 }
+
+export const editRecipe = (id, editedRecipe) => {
+    console.log(`Editing recipe: ${id} ${editedRecipe}`)
+    // axiosWithAuth()
+    //     .put(`https://secret-family-recipes2021.herokuapp.com/api/recipes/${id}`, editedRecipe)
+    //     .then((res) => {
+    //         console.log(res.data)
+    //     }).catch((err) => {
+    //         console.log(err);
+    //     });
+}
+
