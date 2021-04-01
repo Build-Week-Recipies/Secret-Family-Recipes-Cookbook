@@ -181,33 +181,36 @@ let nav = {
 
 const Recipe = (props) => {
     const { fetchData } = props;
+    const initFunct = () => {
+        if (props.recipes === true) {
+            return props.recipes.filter(recipe => recipe.id === parseInt(id))[0];
+        } else {
+            return {
+                title: '',
+                source: '',
+                ingredients: '',
+                instructions: '',
+                category: '',
+                id: 1
+            }
+        }
+    };
+
     const { id } = useParams();
-    const initializeRecipe = {
-        title: 'How to make fluffy moist scrambled eggs',
-        source: 'Tori Avey',
-        ingredients: 'Many',
-        instructions: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-        category: 'Eggs',
-        id: 2
-    }
+    const initializeRecipe = initFunct()
     const [currentRecipe, setCurrentRecipe] = useState(initializeRecipe)
     useEffect(() => {
-        console.log("setting")
-        fetchData()
-        // setTimeout(() => {
-        //     setCurrentRecipe(props.recipes.filter(recipe => recipe.id === parseInt(id))[0])
-        // }, 2000);
-        setCurrentRecipe(
-            props.isLoading ? {
-                title: 'How to make fluffy moist scrambled eggs',
-                source: 'Tori Avey',
-                ingredients: 'Many',
-                instructions: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-                category: 'Eggs',
-                id: 2
-            } : props.recipes.filter(recipe => recipe.id === parseInt(id))[0]
-        )
+        axiosWithAuth()
+            .get("https://secret-family-recipes2021.herokuapp.com/api/recipes")
+            .then(function (res) {
+                setCurrentRecipe(res.data.filter(recipe => recipe.id === parseInt(id))[0])
 
+            }).catch(function (err) {
+                console.error(err);
+            });
+
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const deleteRecipe = () => {
@@ -224,7 +227,7 @@ const Recipe = (props) => {
                 category: 'Eggs',
                 id: 2
             }) : setCurrentRecipe(props.recipes.filter(recipe => recipe.id === parseInt(id))[0])} */}
-            { props.isLoading ? <Loader
+            { !props.recipes ? <Loader
                 className={"loader"}
                 type="Puff"
                 color="#00BFFF"

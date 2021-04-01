@@ -30,7 +30,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 recipes: state.recipes.map(recipe => {
-                    return recipe.id == action.payload[0].id ? action.payload[0] : recipe
+                    return parseInt(recipe.id) === parseInt(action.payload[0].id) ? action.payload[0] : recipe
                 })
             };
         case EDIT_RECIPES_FAILURE:
