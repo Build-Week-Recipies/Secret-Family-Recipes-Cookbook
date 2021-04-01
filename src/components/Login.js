@@ -23,6 +23,7 @@ const Background = styled.div`
     position: relative;
     width: 100vw;
     height: 50vh;
+    display: none;
     #loginImg {
 
     background-size: 400px;
@@ -57,6 +58,7 @@ const Background = styled.div`
 
 @media (min-width: 800px) {
     position: fixed;
+    display: block;
     width: 40vw;
     height: 100vh;
     #loginImg {
@@ -89,11 +91,6 @@ const LoginDiv = styled.div`
     top: 25%;
     box-sizing: border-box;
 
-    @media (max-width: 800px) {
-        h2 {
-            color: white;
-        }
-    }
 `;
 
 const Login = () => {

@@ -20,6 +20,7 @@ const Background = styled.div`
 @media (min-width: 100px) {
     position: relative;
     width: 100vw;
+    display: none;
     height: 50vh;
     #signupImg {
 
@@ -55,6 +56,7 @@ const Background = styled.div`
 
 @media (min-width: 800px) {
     position: fixed;
+    display: block;
     width: 40vw;
     height: 100vh;
     #signupImg {
@@ -88,11 +90,6 @@ const SignupDiv = styled.div`
     top: 25%;
     box-sizing: border-box;
 
-    @media (max-width: 800px) {
-        h2 {
-            color: white;
-        }
-    }
 `;
 
 const SignUp = () => {
