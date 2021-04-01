@@ -87,6 +87,12 @@ const SignupDiv = styled.div`
     left: 35vw;
     top: 25%;
     box-sizing: border-box;
+
+    @media (max-width: 800px) {
+        h2 {
+            color: white;
+        }
+    }
 `;
 
 const SignUp = () => {
