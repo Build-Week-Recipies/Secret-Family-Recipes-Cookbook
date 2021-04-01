@@ -50,6 +50,9 @@ const NavBar = (props) => {
 
     const { display } = props;
     const [show] = useState(display)
+    const logout = () => {
+        localStorage.removeItem('token');
+    }
 
     return (
 
@@ -60,7 +63,7 @@ const NavBar = (props) => {
                     {show.signUp === true && <li>< StyledLink to='/register'>Sign Up</StyledLink></li>}
                     {show.login === true && <li><StyledLink to='/login'>Login</StyledLink></li>}
                     {show.add === true && <li><StyledLink to='/dashboard/add'>Add</StyledLink></li>}
-                    {show.logOut === true && <li><StyledLink to='/'>Log Out</StyledLink></li>}
+                    {show.logOut === true && <li><StyledLink to='/' onClick={logout}>Log Out</StyledLink></li>}
                     {show.dashboard === true && <li><StyledLink to='/dashboard'>Dashboard</StyledLink></li>}
                 </ul>
                 <div className='burger'>

@@ -40,7 +40,7 @@ const HomePage = () => {
             <Background><div id='homeImg'></div></Background>
             <HomeDiv>
                 <NavBar display={nav} />
-                <h1 style={{fontSize: '3.5rem'}}>Secret Family Recipes Cookbook</h1>
+                <h1 style={{fontSize: '3.5rem', fontWeight: 'bold'}}>Secret Family Recipes Cookbook</h1>
                 <p>The little cards my grandma wrote the recipes on in her beautiful cursive are getting lost or are hard to read. I need somewhere secure to keep my recipes with me at all times!</p>
             </HomeDiv>
         </div>
