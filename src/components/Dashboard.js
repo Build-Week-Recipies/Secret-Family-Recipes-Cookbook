@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavBar from './NavBar';
 import styled from 'styled-components';
 import RecipeList from './RecipeList'
+import { fetchData } from '../store/actions';
+import { connect } from 'react-redux'
 
 let nav = {
     logOut: true,
@@ -126,8 +128,11 @@ const DashboardDiv = styled.div`
         color: black;
     }
     `
-const Dashboard = () => {
-
+const Dashboard = (props) => {
+    const { fetchData } = props;
+    useEffect(() => {
+        fetchData()
+    }, [])
 
 
     return (
@@ -139,4 +144,12 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+    return {
+        isLoading: state.isLoading,
+        recipes: state.recipes,
+        error: state.error
+    }
+}
+
+export default connect(mapStateToProps, { fetchData })(Dashboard);
