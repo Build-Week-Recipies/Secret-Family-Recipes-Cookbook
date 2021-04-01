@@ -3,7 +3,6 @@ import '../App.css';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import NavBar from './NavBar';
-import { axiosWithAuth } from '../helper/axiosWithAuth';
 import axios from 'axios'
 
 const Background = styled.div`

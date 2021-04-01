@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../App.css';
 import styled from 'styled-components';
 import NavBar from './NavBar';
-import axios from 'axios'
 import { useHistory } from 'react-router';
 import { axiosWithAuth } from '../helper/axiosWithAuth';
 
