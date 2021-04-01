@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import '../App.css';
 import NavBar from './NavBar';
+
 
 const Background = styled.div`
     display: flex;
@@ -99,28 +100,29 @@ const HomeDiv = styled.div`
     }
 `;
 
-let nav = {
-    login: true,
-    signUp: true,
-    home: true,
-    add: false,
-    logOut: false,
-    dashboard: true
-}
 
 const HomePage = () => {
+    const [token, setToken] = useState(localStorage.getItem('token'))
+
+    let nav = {
+        login: !token,
+        signUp: !token,
+        add: false,
+        logOut: false,
+        dashboard: true
+    }
 
     return (
         <div>
             <Background><div id='homeImg'></div></Background>
             <HomeDiv>
                 <NavBar display={nav} />
-                <h1 style={{fontSize: '3.5rem', fontWeight: 'bold'}}>Secret Family Recipes Cookbook</h1>
+                <h1 style={{ fontSize: '3.5rem', fontWeight: 'bold' }}>Secret Family Recipes Cookbook</h1>
                 <p>The little cards my grandma wrote the recipes on in her beautiful cursive are getting lost or are hard to read. I need somewhere secure to keep my recipes with me at all times!</p>
             </HomeDiv>
         </div>
-            
-        
+
+
     )
 }
 

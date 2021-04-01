@@ -1,8 +1,8 @@
 import { FETCH_RECIPES_START, FETCH_RECIPES_SUCCESS, FETCH_RECIPES_FAILURE } from "./actions"
-
+import data from '../dummyData/data'
 const initialState = {
     isLoading: false,
-    recipes: [],
+    recipes: data,
     error: ""
 };
 
@@ -16,7 +16,7 @@ export const reducer = (state = initialState, action) => {
         case FETCH_RECIPES_SUCCESS:
             return {
                 ...state,
-                recipes: action.payload,
+                // recipes: action.payload,
                 isLoading: false,
                 error: ""
             };
