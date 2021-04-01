@@ -91,8 +91,8 @@ const SignupDiv = styled.div`
 
 const SignUp = () => {
     const initialValues = {
-        first_name: '',
-        last_name: '',
+        // first_name: '',
+        // last_name: '',
         username: '',
         password: ''
     }
@@ -115,7 +115,7 @@ const SignUp = () => {
             .catch(err => {
                 console.log(err.response);
             })
-            push('/login');
+        push('/login');
     }
 
     let nav = {
@@ -134,12 +134,12 @@ const SignUp = () => {
                 <NavBar display={nav} />
                 <h2>Sign Up:</h2>
                 <form onSubmit={submitHandler}>
-                    <label>
+                    {/* <label>
                         <input type='text' name='first_name' value={credentials.first_name} onChange={changeHandler} placeholder='First Name:' />
                     </label>
                     <label>
-                        <input type='text' name='last_name' value ={credentials.last_name} onChange={changeHandler} placeholder='Last Name:' />
-                    </label>
+                        <input type='text' name='last_name' value={credentials.last_name} onChange={changeHandler} placeholder='Last Name:' />
+                    </label> */}
                     <label>
                         <input type='text' name='username' value={credentials.username} onChange={changeHandler} placeholder='Username:' />
                     </label>
