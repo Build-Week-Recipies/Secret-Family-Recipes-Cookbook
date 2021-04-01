@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Background = styled.div`
     display: flex;
@@ -79,18 +80,38 @@ const Background = styled.div`
 
 const RecipeDiv = styled.div`
     position: absolute;
-    width: 60vw;
+    width: 40vw;
     margin: 0;
     padding: 20px;
-    left: 35vw;
+    left: 40vw;
     top: 25%;
     box-sizing: border-box;
     display: initial;
+
+    .primary {
+        text-align: justify;
+    }
+
+    .secondary {
+            margin: 0;
+            font-size: 1.2rem;
+        }
 
     #addTextArea {
         width: 216px;
         max-width: 350px;
         max-height: 200px;
+    }
+    #goToEdit {
+        color: inherit;
+    }
+
+    .buttonContainer {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        justify-items: space-evenly;
+        width: 100%;
     }
 
 @media (min-width: 100px) {
@@ -123,15 +144,16 @@ const RecipeDiv = styled.div`
 /* Larger than desktop */
 
 @media (min-width: 800px) {
-    position: fixed;
-    width: 60vw;
-    margin: 0;
-    height: 100vh;
-    padding: 20px;
-    left: 35vw;
-    top: 0;
-    box-sizing: border-box;
+    position: absolute;
+    width: 40vw;
+    margin: 0 0 5vh 0;
+    padding: 5vw 10vh;
+    height: auto;
+    left: 40vw;
+    top: 0vh;
+    box-sizing: content-box;
     display: flex;
+    
 }
 
 /* Larger than Desktop HD */
@@ -168,7 +190,17 @@ const Recipe = () => {
                 <NavBar display={nav} />
                 <h5>{recipe.title}</h5>
                 <p>Ingredients needed for this recipe: {recipe.ingredients}</p>
-                <p>{recipe.instructions}</p>
+                <p className="primary">{recipe.instructions}</p>
+                <p className="secondary">Category: {recipe.category}</p>
+                <p className="secondary">By: {recipe.source}</p>
+                <div className="buttonContainer">
+                    <button>
+                        <Link id="goToEdit" to="/recipe/1/edit">
+                            Edit
+                        </Link>
+                    </button>
+                    <button>Delete</button>
+                </div>
             </RecipeDiv>
         </div>
     );

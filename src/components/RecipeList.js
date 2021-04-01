@@ -65,9 +65,9 @@ const RecipeList = () => {
                     return (<Link to="recipe/1" className="listUnit" key={i}>
                         <div>
                             <h5>{recipe.title}</h5>
-                            <p>Instructions: {truncate(recipe.instructions, 100)}</p>
-                            <p>By: {recipe.source}</p>
-                            <p>Category: {recipe.category}</p>
+                            <p className="primary">Instructions: {truncate(recipe.instructions, 100)}</p>
+                            <p className="secondary">By: {recipe.source}</p>
+                            <p className="secondary">Category: {recipe.category}</p>
                         </div>
                     </Link>)
                 })}

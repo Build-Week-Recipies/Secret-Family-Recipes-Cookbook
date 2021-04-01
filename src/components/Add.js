@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import '../App.css';
 import styled from 'styled-components';
 import NavBar from './NavBar';
+import axios from 'axios'
+import { useHistory } from 'react-router';
+import { axiosWithAuth } from '../helper/axiosWithAuth';
+
 
 const Background = styled.div`
     display: flex;
@@ -147,6 +151,7 @@ const AddDiv = styled.div`
 `;
 
 const Add = () => {
+
     const initialValues = {
         title: '',
         source: '',
@@ -154,17 +159,30 @@ const Add = () => {
         instructions: '',
         category: '',
     }
-    const [recipe, setRecipe] = useState(initialValues);
+    const [newRecipe, setRecipe] = useState(initialValues);
+
+    const history = useHistory()
 
     const changeHandler = e => {
         const name = e.target.name;
         const value = e.target.value;
-        setRecipe({ ...recipe, [name]: value });
+        setRecipe({ ...newRecipe, [name]: value });
     }
 
     const addHandler = e => {
         e.preventDefault();
         // axios call to add a new item
+        axiosWithAuth()
+            .post("/recipe/1", newRecipe)
+            .then((res) => {
+                console.log(res.data);
+                setRecipe(initialValues)
+                history.push('/dashboard')
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
     }
 
     let nav = {
@@ -180,19 +198,19 @@ const Add = () => {
                 <h2>Add a New Recipe:</h2>
                 <form onSubmit={addHandler}>
                     <label>
-                        <input type='text' name='title' value={recipe.title} onChange={changeHandler} placeholder='Title:' />
+                        <input type='text' name='title' value={newRecipe.title} onChange={changeHandler} placeholder='Title:' />
                     </label>
                     <label>
-                        <input type='text' name='source' value={recipe.source} onChange={changeHandler} placeholder='Source:' />
+                        <input type='text' name='source' value={newRecipe.source} onChange={changeHandler} placeholder='Source:' />
                     </label>
                     <label>
-                        <input type='text' name='ingredients' value={recipe.ingredients} onChange={changeHandler} placeholder='Ingredients:' />
+                        <input type='text' name='ingredients' value={newRecipe.ingredients} onChange={changeHandler} placeholder='Ingredients:' />
                     </label>
                     <label>
-                        <input type='text' name='category' value={recipe.category} onChange={changeHandler} placeholder='Category:' />
+                        <input type='text' name='category' value={newRecipe.category} onChange={changeHandler} placeholder='Category:' />
                     </label>
                     <label>
-                        <textarea type='text' id="addTextArea" name='instructions' value={recipe.instructions} onChange={changeHandler} placeholder='Instructions:' />
+                        <textarea type='text' id="addTextArea" name='instructions' value={newRecipe.instructions} onChange={changeHandler} placeholder='Instructions:' />
                     </label>
                     <button>Add</button>
                 </form>
