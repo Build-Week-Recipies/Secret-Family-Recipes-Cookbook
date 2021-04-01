@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import RecipeList from './RecipeList'
 import { fetchData } from '../store/actions';
 import { connect } from 'react-redux'
-
+import data from '../dummyData/data'
 let nav = {
     logOut: true,
     add: true,
@@ -139,7 +139,7 @@ const Dashboard = (props) => {
         <DashboardDiv>
             <NavBar display={nav} />
             <Background ><div id="bgImg"></div><p>Old Recepies For Old People</p></Background>
-            <RecipeList />
+            <RecipeList recipes={data} />
         </DashboardDiv>
     )
 }

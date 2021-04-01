@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import data from '../dummyData/data'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -36,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const RecipeList = () => {
+const RecipeList = (props) => {
     //axios GET when component renders
-
+    const { recipes } = props;
     const classes = useStyles();
 
     const handleSearch = (e) => {
@@ -60,7 +59,7 @@ const RecipeList = () => {
                     </IconButton>
                 </Paper>
             </div>
-            {data.map(
+            {recipes.map(
                 (recipe, i) => {
                     return (<Link to="recipe/1" className="listUnit" key={i}>
                         <div>
