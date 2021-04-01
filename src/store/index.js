@@ -2,7 +2,7 @@ import { FETCH_RECIPES_START, FETCH_RECIPES_SUCCESS, FETCH_RECIPES_FAILURE } fro
 
 const initialState = {
     isLoading: false,
-    recipies: [],
+    recipes: [],
     error: ""
 };
 
@@ -16,7 +16,7 @@ export const reducer = (state = initialState, action) => {
         case FETCH_RECIPES_SUCCESS:
             return {
                 ...state,
-                RECIPES: action.payload,
+                recipes: action.payload,
                 isLoading: false,
                 error: ""
             };
