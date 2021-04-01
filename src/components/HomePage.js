@@ -12,6 +12,70 @@ const Background = styled.div`
     position: absolute;
     z-index: -4;
     color: white;
+
+    @media (min-width: 100px) {
+    
+    position: absolute;
+    display:block;
+    width: 100vw;
+    height: 50vh;
+    #bgImg {
+    display:block;
+    margin: 5px;
+    box-sizing: border-box;
+    background-size: 400px;
+    }
+}
+
+@media (min-width: 400px) {
+    #bgImg {
+    background-size: 550px;
+    }
+}
+/* Larger than phablet (also point when grid becomes active) */
+
+@media (min-width: 550px) {
+    
+    width: 100vw;
+    height: 35vh;
+    #bgImg {
+        background-size: 750px;
+    }
+}
+
+/* Larger than tablet */
+
+@media (min-width: 750px) {
+    #bgImg {
+        background-size: 1025px;
+    }
+}
+
+/* Larger than desktop */
+
+@media (min-width: 800px) {
+    display: flex;
+    position: fixed;
+    width: 35vw;
+    height: 100vh;
+    #bgImg {
+            background-size: 500px;
+        }
+}
+
+/* Larger than Desktop HD */
+
+@media (min-width: 1200px) {
+    #bgImg {
+            background-size: 600px;
+        }
+}
+
+@media (min-width: 1900px) {
+    #bgImg {
+            background-size: 1000px;
+        }
+}
    `;
 
 const HomeDiv = styled.div`
@@ -22,6 +86,17 @@ const HomeDiv = styled.div`
     box-sizing: border-box;
     right: 15%;
     top: 20%;
+
+    @media (max-width: 800px) {
+        display: block;
+        margin: 10%;
+    }
+
+    @media (max-width: 550px) {
+        h1 {
+            text-shadow: 3px 3px 3px pink;
+        }
+    }
 `;
 
 let nav = {
