@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { axiosWithAuth } from '../helper/axiosWithAuth';
 
 const Background = styled.div`
     display: flex;
@@ -167,43 +169,46 @@ const RecipeDiv = styled.div`
 }
 `;
 
-const eggs = {
-    recipe: 'Scrambled Eggs',
-    title: 'How to make fluffy moist scrambled eggs',
-    source: 'Tori Avey',
-    ingredients: 'Many',
-    instructions: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-    category: 'Eggs'
-}
-
 let nav = {
     logOut: true,
     dashboard: true
 }
 
-const Recipe = () => {
-    const [recipe] = useState(eggs)
+const Recipe = (props) => {
+    const { id } = useParams();
+    const currentRecipe = props.recipes.filter(recipe => recipe.id === parseInt(id))[0];
+
+    const deleteRecipe = () => {
+        console.log('not disabled')
+    }
+
     return (
         <div>
             <Background><div id='addImg'></div></Background>
             <RecipeDiv>
                 <NavBar display={nav} />
-                <h5>{recipe.title}</h5>
-                <p>Ingredients needed for this recipe: {recipe.ingredients}</p>
-                <p className="primary">{recipe.instructions}</p>
-                <p className="secondary">Category: {recipe.category}</p>
-                <p className="secondary">By: {recipe.source}</p>
+                <h5>{currentRecipe.title}</h5>
+                <p>Ingredients needed for this recipe: {currentRecipe.ingredients}</p>
+                <p className="primary">{currentRecipe.instructions}</p>
+                <p className="secondary">Category: {currentRecipe.category}</p>
+                <p className="secondary">By: {currentRecipe.source}</p>
                 <div className="buttonContainer">
                     <button>
-                        <Link id="goToEdit" to="/recipe/1/edit">
+                        <Link id="goToEdit" to={`/recipe/${id}/edit`}>
                             Edit
                         </Link>
                     </button>
-                    <button>Delete</button>
+                    <button disabled={true} onClick={deleteRecipe}>Delete</button>
                 </div>
             </RecipeDiv>
         </div>
     );
 };
 
-export default Recipe;
+const mapStateToProps = (state) => {
+    return {
+        recipes: state.recipes,
+    }
+}
+
+export default connect(mapStateToProps)(Recipe);

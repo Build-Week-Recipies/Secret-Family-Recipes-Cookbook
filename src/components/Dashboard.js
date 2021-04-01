@@ -4,10 +4,13 @@ import styled from 'styled-components';
 import RecipeList from './RecipeList'
 import { fetchData } from '../store/actions';
 import { connect } from 'react-redux'
+import Loader from 'react-loader-spinner';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 let nav = {
     logOut: true,
     add: true,
+    home: true,
 }
 
 const Background = styled.div`
@@ -137,9 +140,22 @@ const Dashboard = (props) => {
 
     return (
         <DashboardDiv>
-            <NavBar display={nav} />
-            <Background ><div id="bgImg"></div><p>Old Recepies For Old People</p></Background>
-            <RecipeList />
+            {
+                props.isLoading ? <Loader
+                    className={"loader"}
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                    timeout={3000} //3 secs
+                /> :
+                    <div>
+                        <NavBar display={nav} />
+                        <Background ><div id="bgImg"></div><p>Old Recepies For Old People</p></Background>
+                        <RecipeList recipes={props.recipes} />
+                    </div>
+
+            }
         </DashboardDiv>
     )
 }
