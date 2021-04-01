@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Background = styled.div`
     display: flex;
@@ -101,6 +102,9 @@ const RecipeDiv = styled.div`
         max-width: 350px;
         max-height: 200px;
     }
+    #goToEdit {
+        color: inherit;
+    }
 
     .buttonContainer {
         margin-top: 30px;
@@ -190,7 +194,11 @@ const Recipe = () => {
                 <p className="secondary">Category: {recipe.category}</p>
                 <p className="secondary">By: {recipe.source}</p>
                 <div className="buttonContainer">
-                    <button>Edit</button>
+                    <button>
+                        <Link id="goToEdit" to="/recipe/1/edit">
+                            Edit
+                        </Link>
+                    </button>
                     <button>Delete</button>
                 </div>
             </RecipeDiv>
