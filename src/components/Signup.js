@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import NavBar from './NavBar';
-import { axiosWithAuth } from '../helper/axiosWithAuth';
+import axios from 'axios';
 
 const Background = styled.div`
     display: flex;
@@ -108,7 +108,7 @@ const SignUp = () => {
     const submitHandler = e => {
         e.preventDefault();
         // axios call to post user info, push to './login'
-        axiosWithAuth().post('https://secret-family-recipes2021.herokuapp.com/api/auth/register', credentials)
+        axios.post('https://secret-family-recipes2021.herokuapp.com/api/auth/register', credentials)
             .then(res => {
                 console.log(res);
             })
