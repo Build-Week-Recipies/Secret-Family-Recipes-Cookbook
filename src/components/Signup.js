@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import NavBar from './NavBar';
+import { axiosWithAuth } from '../helper/axiosWithAuth';
 
 const Background = styled.div`
     display: flex;
@@ -95,16 +97,25 @@ const SignUp = () => {
         password: ''
     }
     const [credentials, setCredentials] = useState(initialValues);
+    const { push } = useHistory();
 
     const changeHandler = e => {
         const name = e.target.name;
         const value = e.target.value;
-        setCredentials({[name]: value});
+        setCredentials({ ...credentials, [name]: value });
     }
 
     const submitHandler = e => {
         e.preventDefault();
-        // axios call to put user info, push to './login'
+        // axios call to post user info, push to './login'
+        axiosWithAuth().post('https://secret-family-recipes2021.herokuapp.com/api/auth/register', credentials)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err.response);
+            })
+            push('/login');
     }
 
     let nav = {
