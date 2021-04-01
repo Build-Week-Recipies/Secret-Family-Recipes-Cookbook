@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { editRecipe } from '../store/actions';
+import { axiosWithAuth } from '../helper/axiosWithAuth'
+import { fetchData } from "../store/actions"
 
 const Background = styled.div`
     display: flex;
@@ -161,10 +163,40 @@ const EditDiv = styled.div`
 `;
 
 const Edit = (props) => {
+    const { fetchData } = props;
     const { editRecipe } = props;
     const { id } = useParams()
-    const initialValues = props.recipes.filter(recipe => recipe.id === parseInt(id))[0];
-    const [recipe, setRecipe] = useState(initialValues);
+    const initFunct = () => {
+        if (props.recipes === true) {
+            return props.recipes.filter(recipe => recipe.id === parseInt(id))[0];
+        } else {
+            return {
+                title: '',
+                source: '',
+                ingredients: '',
+                instructions: '',
+                category: '',
+                id: 1
+            }
+        }
+    };
+    const initializeRecipe = initFunct()
+    const [recipe, setRecipe] = useState(initializeRecipe);
+    const history = useHistory();
+
+    useEffect(() => {
+        axiosWithAuth()
+            .get("https://secret-family-recipes2021.herokuapp.com/api/recipes")
+            .then(function (res) {
+                setRecipe(res.data.filter(recipe => recipe.id === parseInt(id))[0])
+
+            }).catch(function (err) {
+                console.error(err);
+            });
+
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const changeHandler = e => {
         const name = e.target.name;
@@ -174,7 +206,8 @@ const Edit = (props) => {
 
     const editHandler = e => {
         e.preventDefault();
-        // editRecipe(id, recipe)
+        editRecipe(id, recipe)
+        history.push(`/recipe/${id}`)
     }
 
     let nav = {
@@ -213,8 +246,7 @@ const Edit = (props) => {
 const mapStateToProps = (state) => {
     return {
         recipes: state.recipes,
-
     }
 }
 
-export default connect(mapStateToProps, { editRecipe })(Edit);
+export default connect(mapStateToProps, { editRecipe, fetchData })(Edit);

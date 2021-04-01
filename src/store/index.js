@@ -1,8 +1,8 @@
-import { FETCH_RECIPES_START, FETCH_RECIPES_SUCCESS, FETCH_RECIPES_FAILURE } from "./actions"
-import data from '../dummyData/data'
+import { FETCH_RECIPES_START, FETCH_RECIPES_SUCCESS, FETCH_RECIPES_FAILURE, EDIT_RECIPES_SUCCESS, EDIT_RECIPES_FAILURE } from "./actions"
+// import data from '../dummyData/data'
 const initialState = {
     isLoading: false,
-    recipes: data,
+    recipes: [],
     error: ""
 };
 
@@ -16,7 +16,7 @@ export const reducer = (state = initialState, action) => {
         case FETCH_RECIPES_SUCCESS:
             return {
                 ...state,
-                // recipes: action.payload,
+                recipes: action.payload,
                 isLoading: false,
                 error: ""
             };
@@ -24,6 +24,18 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
+                error: action.payload
+            };
+        case EDIT_RECIPES_SUCCESS:
+            return {
+                ...state,
+                recipes: state.recipes.map(recipe => {
+                    return parseInt(recipe.id) === parseInt(action.payload[0].id) ? action.payload[0] : recipe
+                })
+            };
+        case EDIT_RECIPES_FAILURE:
+            return {
+                ...state,
                 error: action.payload
             };
         default:
