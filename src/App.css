@@ -160,6 +160,21 @@ nav {
   background-color: rgb(134, 64, 64);
   margin: 5px;
   transition: all 0.3s ease;
+
+}
+
+@media (max-width: 800px) {
+  .burger div {
+    background-color: white;
+  }
+  .nav-links {
+    transform: translateX(0%);
+    transition: transform 0.3s ease-in;
+  }
+  .nav-links li {
+    opacity: 1;
+    text-shadow: 1px 1px 1px pink;
+  }
 }
 
 .burger {
