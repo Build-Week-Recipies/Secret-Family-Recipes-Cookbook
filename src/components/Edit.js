@@ -3,7 +3,7 @@ import '../App.css';
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { editRecipe } from '../store/actions';
 
 const Background = styled.div`
@@ -165,6 +165,7 @@ const Edit = (props) => {
     const { id } = useParams()
     const initialValues = props.recipes.filter(recipe => recipe.id === parseInt(id))[0];
     const [recipe, setRecipe] = useState(initialValues);
+    const history = useHistory();
 
     const changeHandler = e => {
         const name = e.target.name;
@@ -174,7 +175,8 @@ const Edit = (props) => {
 
     const editHandler = e => {
         e.preventDefault();
-        // editRecipe(id, recipe)
+        editRecipe(id, recipe)
+        history.push(`/recipe/${id}`)
     }
 
     let nav = {
@@ -213,7 +215,6 @@ const Edit = (props) => {
 const mapStateToProps = (state) => {
     return {
         recipes: state.recipes,
-
     }
 }
 

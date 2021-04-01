@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar'
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { axiosWithAuth } from '../helper/axiosWithAuth';
+import { fetchData } from "../store/actions"
+import Loader from 'react-loader-spinner';
+
+
 
 const Background = styled.div`
     display: flex;
@@ -174,9 +178,37 @@ let nav = {
     dashboard: true
 }
 
+
 const Recipe = (props) => {
+    const { fetchData } = props;
     const { id } = useParams();
-    const currentRecipe = props.recipes.filter(recipe => recipe.id === parseInt(id))[0];
+    const initializeRecipe = {
+        title: 'How to make fluffy moist scrambled eggs',
+        source: 'Tori Avey',
+        ingredients: 'Many',
+        instructions: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+        category: 'Eggs',
+        id: 2
+    }
+    const [currentRecipe, setCurrentRecipe] = useState(initializeRecipe)
+    useEffect(() => {
+        console.log("setting")
+        fetchData()
+        // setTimeout(() => {
+        //     setCurrentRecipe(props.recipes.filter(recipe => recipe.id === parseInt(id))[0])
+        // }, 2000);
+        setCurrentRecipe(
+            props.isLoading ? {
+                title: 'How to make fluffy moist scrambled eggs',
+                source: 'Tori Avey',
+                ingredients: 'Many',
+                instructions: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+                category: 'Eggs',
+                id: 2
+            } : props.recipes.filter(recipe => recipe.id === parseInt(id))[0]
+        )
+
+    }, [])
 
     const deleteRecipe = () => {
         console.log('not disabled')
@@ -184,23 +216,40 @@ const Recipe = (props) => {
 
     return (
         <div>
-            <Background><div id='addImg'></div></Background>
-            <RecipeDiv>
-                <NavBar display={nav} />
-                <h5>{currentRecipe.title}</h5>
-                <p>Ingredients needed for this recipe: {currentRecipe.ingredients}</p>
-                <p className="primary">{currentRecipe.instructions}</p>
-                <p className="secondary">Category: {currentRecipe.category}</p>
-                <p className="secondary">By: {currentRecipe.source}</p>
-                <div className="buttonContainer">
-                    <button>
-                        <Link id="goToEdit" to={`/recipe/${id}/edit`}>
-                            Edit
+            {/* { props.isLoading ? setCurrentRecipe({
+                title: 'How to make fluffy moist scrambled eggs',
+                source: 'Tori Avey',
+                ingredients: 'Many',
+                instructions: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+                category: 'Eggs',
+                id: 2
+            }) : setCurrentRecipe(props.recipes.filter(recipe => recipe.id === parseInt(id))[0])} */}
+            { props.isLoading ? <Loader
+                className={"loader"}
+                type="Puff"
+                color="#00BFFF"
+                height={100}
+                width={100}
+                timeout={3000} //3 secs
+            /> :
+                <RecipeDiv>
+                    <Background><div id='addImg'></div></Background>
+                    <NavBar display={nav} />
+                    <h5>{currentRecipe.title}</h5>
+                    <p>Ingredients needed for this recipe: {currentRecipe.ingredients}</p>
+                    <p className="primary">{currentRecipe.instructions}</p>
+                    <p className="secondary">Category: {currentRecipe.category}</p>
+                    <p className="secondary">By: {currentRecipe.source}</p>
+                    <div className="buttonContainer">
+                        <button>
+                            <Link id="goToEdit" to={`/recipe/${id}/edit`}>
+                                Edit
                         </Link>
-                    </button>
-                    <button disabled={true} onClick={deleteRecipe}>Delete</button>
-                </div>
-            </RecipeDiv>
+                        </button>
+                        <button disabled={true} onClick={deleteRecipe}>Delete</button>
+                    </div>
+                </RecipeDiv>
+            }
         </div>
     );
 };
@@ -208,7 +257,8 @@ const Recipe = (props) => {
 const mapStateToProps = (state) => {
     return {
         recipes: state.recipes,
+        isLoading: state.isLoading
     }
 }
 
-export default connect(mapStateToProps)(Recipe);
+export default connect(mapStateToProps, { fetchData })(Recipe);

@@ -135,7 +135,8 @@ const Dashboard = (props) => {
     const { fetchData } = props;
     useEffect(() => {
         fetchData()
-    }, [fetchData])
+
+    }, [])
 
 
     return (
