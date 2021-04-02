@@ -1,10 +1,12 @@
-import { Contacts } from '@material-ui/icons'
+
 import { axiosWithAuth } from '../../helper/axiosWithAuth'
 export const FETCH_RECIPES_SUCCESS = "FETCH_RECIPES_SUCCESS"
 export const EDIT_RECIPES_SUCCESS = "EDIT_RECIPES_SUCCESS"
 export const FETCH_RECIPES_START = "FETCH_RECIPES_START"
 export const FETCH_RECIPES_FAILURE = "FETCH_RECIPES_FAILURE"
 export const EDIT_RECIPES_FAILURE = "EDIT_RECIPES_FAILURE"
+export const NEW_RECIPES_SUCCESS = "NEW_RECIPES_SUCCESS"
+export const NEW_RECIPES_FAILURE = "NEW_RECIPES_FAILURE"
 
 export const fetchData = () => {
     return (dispatch) => {
@@ -26,13 +28,13 @@ export const fetchData = () => {
 }
 
 export const deleteRecipe = (id) => {
-    // axiosWithAuth()
-    //     .delete(`https://secret-family-recipes2021.herokuapp.com/api/recipes/${id}`)
-    //     .then((res) => {
-    //         console.log(res.data);
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     })
+    axiosWithAuth()
+        .delete(`https://secret-family-recipes2021.herokuapp.com/api/recipes/${id}`)
+        .then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
 }
 
 export const editRecipe = (id, editedRecipe) => {
@@ -48,6 +50,21 @@ export const editRecipe = (id, editedRecipe) => {
             }).catch((err) => {
                 console.log(err);
                 dispatch({ type: EDIT_RECIPES_FAILURE, payload: err.message });
+            });
+    }
+
+}
+export const newRecipe = (newRecipe) => {
+    return (dispatch) => {
+
+        axiosWithAuth()
+            .post(`https://secret-family-recipes2021.herokuapp.com/api/recipes`, newRecipe)
+            .then((res) => {
+                console.log(res.data)
+                dispatch({ type: NEW_RECIPES_SUCCESS, payload: res.data });
+            }).catch((err) => {
+                console.log(err);
+                dispatch({ type: NEW_RECIPES_FAILURE, payload: err.message });
             });
     }
 

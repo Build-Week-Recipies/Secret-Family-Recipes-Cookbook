@@ -1,4 +1,4 @@
-import { FETCH_RECIPES_START, FETCH_RECIPES_SUCCESS, FETCH_RECIPES_FAILURE, EDIT_RECIPES_SUCCESS, EDIT_RECIPES_FAILURE } from "./actions"
+import { FETCH_RECIPES_START, FETCH_RECIPES_SUCCESS, FETCH_RECIPES_FAILURE, EDIT_RECIPES_SUCCESS, EDIT_RECIPES_FAILURE, NEW_RECIPES_FAILURE, NEW_RECIPES_SUCCESS } from "./actions"
 // import data from '../dummyData/data'
 const initialState = {
     isLoading: false,
@@ -34,6 +34,15 @@ export const reducer = (state = initialState, action) => {
                 })
             };
         case EDIT_RECIPES_FAILURE:
+            return {
+                ...state,
+                error: action.payload
+            };
+        case NEW_RECIPES_SUCCESS:
+            return {
+                ...state
+            };
+        case NEW_RECIPES_FAILURE:
             return {
                 ...state,
                 error: action.payload
