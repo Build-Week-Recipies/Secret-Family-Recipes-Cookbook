@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -34,12 +34,24 @@ const useStyles = makeStyles((theme) => ({
 
 
 const RecipeList = (props) => {
-    //axios GET when component renders
     const { recipes } = props;
     const classes = useStyles();
+    const [recipesList, setRecipesList] = useState(recipes)
+    const [search, setSearch] = useState('');
 
     const handleSearch = (e) => {
         e.preventDefault()
+        console.log(search)
+        let regex = new RegExp(search, "i", "U")
+        setRecipesList(
+            search ? recipesList.filter(recipe => regex.test(recipe.title)) : recipes
+        )
+    }
+
+    const handleChange = (e) => {
+        e.preventDefault()
+        console.log(e.target.value)
+        setSearch(e.target.value)
     }
 
     const truncate = (str, n) => {
@@ -53,6 +65,8 @@ const RecipeList = (props) => {
                     <InputBase
                         className={classes.input}
                         placeholder="Search"
+                        value={search}
+                        onChange={handleChange}
                         id="search"
                         inputProps={{ 'aria-label': 'search google maps' }}
                     />
@@ -61,7 +75,7 @@ const RecipeList = (props) => {
                     </IconButton>
                 </Paper>
             </div>
-            {recipes.map(
+            {recipesList.map(
                 (recipe) => {
                     return (<Link to={`recipe/${recipe.id}`} className="listUnit" key={recipe.id}>
                         <div>
