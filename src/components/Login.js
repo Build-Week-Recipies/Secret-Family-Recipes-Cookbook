@@ -111,7 +111,6 @@ const Login = () => {
         // axios call with token, push to dashboard
         axios.post('https://secret-family-recipes2021.herokuapp.com/api/auth/login', credentials)
             .then(res => {
-                console.log(res)
                 localStorage.setItem("token", res.data.token);
                 push('/dashboard')
             })

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar'
 import styled from 'styled-components';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { axiosWithAuth } from '../helper/axiosWithAuth';
 import { fetchData } from "../store/actions"
@@ -181,6 +181,7 @@ let nav = {
 
 const Recipe = (props) => {
     const { fetchData } = props;
+    const history = useHistory();
     const initFunct = () => {
         if (props.recipes === true) {
             return props.recipes.filter(recipe => recipe.id === parseInt(id))[0];
@@ -213,8 +214,15 @@ const Recipe = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const deleteRecipe = () => {
+    const removeRecipe = () => {
         console.log('not disabled')
+        axiosWithAuth()
+            .delete(`https://secret-family-recipes2021.herokuapp.com/api/recipes/${id}`)
+            .then((res) => {
+                history.push('/dashboard')
+            }).catch((err) => {
+                console.log(err);
+            })
     }
 
     return (
@@ -249,7 +257,7 @@ const Recipe = (props) => {
                                 Edit
                         </Link>
                         </button>
-                        <button disabled={true} onClick={deleteRecipe}>Delete</button>
+                        <button onClick={removeRecipe}>Delete</button>
                     </div>
                 </RecipeDiv>
             }
