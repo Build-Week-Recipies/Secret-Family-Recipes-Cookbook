@@ -27,16 +27,6 @@ export const fetchData = () => {
     }
 }
 
-export const deleteRecipe = (id) => {
-    axiosWithAuth()
-        .delete(`https://secret-family-recipes2021.herokuapp.com/api/recipes/${id}`)
-        .then((res) => {
-            console.log(res.data);
-        }).catch((err) => {
-            console.log(err);
-        })
-}
-
 export const editRecipe = (id, editedRecipe) => {
     console.log(id)
 

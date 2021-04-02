@@ -158,6 +158,7 @@ const Add = (props) => {
         ingredients: '',
         instructions: '',
         category: '',
+        creator_id: 1
     }
     const [newRecipe, setRecipe] = useState(initialValues);
 
@@ -172,18 +173,16 @@ const Add = (props) => {
     const addHandler = e => {
         e.preventDefault();
         // axios call to add a new item
-        console.log('starting');
+
         axiosWithAuth()
             .post("https://secret-family-recipes2021.herokuapp.com/api/recipes", newRecipe)
             .then((res) => {
-                console.log(res.data);
                 setRecipe(initialValues)
                 history.push('/dashboard')
             })
             .catch((err) => {
                 console.log(err);
             });
-
     }
 
     let nav = {
