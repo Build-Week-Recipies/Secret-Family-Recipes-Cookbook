@@ -110,7 +110,7 @@ const HomePage = () => {
         login: !token,
         signUp: !token,
         add: false,
-        logOut: false,
+        logOut: !!token,
         dashboard: true
     }
 
