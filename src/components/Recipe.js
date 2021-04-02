@@ -155,6 +155,7 @@ const RecipeDiv = styled.div`
     margin: 0 0 5vh 0;
     padding: 5vw 10vh;
     height: auto;
+    min-height: 80vh;
     left: 40vw;
     top: 0vh;
     box-sizing: content-box;

@@ -159,7 +159,7 @@ const Dashboard = (props) => {
                 /> :
                     <div>
                         <NavBar display={nav} />
-                        <Background ><div id="bgImg"></div><p>Old Recepies For Old People</p></Background>
+                        <Background ><div id="bgImg"></div><p></p></Background>
                         <RecipeList recipes={props.recipes} />
                     </div>
 
