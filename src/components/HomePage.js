@@ -102,7 +102,7 @@ const HomeDiv = styled.div`
 
 
 const HomePage = () => {
-    const [token, setToken] = useState(localStorage.getItem('token'))
+    const [token] = useState(localStorage.getItem('token'))
 
     let nav = {
         login: !token,
