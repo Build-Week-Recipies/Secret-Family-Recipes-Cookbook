@@ -81,16 +81,18 @@ const Background = styled.div`
 
 const HomeDiv = styled.div`
     position: absolute;
-    width: 40vw;
+    width: 100vw;
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
-    right: 15%;
-    top: 20%;
+    right: 0;
+    top: 30%;
+    box-sizing: border-box;
 
-    @media (max-width: 800px) {
+    @media (min-width: 1024px) {
         display: block;
-        margin: 10%;
+        width: 40vw;
+        right: 15%;
     }
 
     @media (max-width: 550px) {
