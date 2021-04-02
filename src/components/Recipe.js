@@ -25,14 +25,14 @@ const Background = styled.div`
 @media (min-width: 100px) {
     width: 100vw;
     height: 50vh;
-    #recipeImg {
+    #addImg {
 
     display: none;
     }
 }
 
 @media (min-width: 400px) {
-    #recipeImg {
+    #addImg {
     display: none;
     }
 }
@@ -42,7 +42,7 @@ const Background = styled.div`
     
     width: 100vw;
     height: 40vh;
-    #recipeImg {
+    #addImg {
         display: none;
     }
 }
@@ -50,7 +50,7 @@ const Background = styled.div`
 /* Larger than tablet */
 
 @media (min-width: 750px) {
-    #recipeImg {
+    #addImg {
         display: none;
     }
 }
@@ -61,7 +61,7 @@ const Background = styled.div`
     position: fixed;
     width: 40vw;
     height: 100vh;
-    #recipeImg {
+    #addImg {
             background-size: 600px;
             display: initial;
         }  
@@ -70,14 +70,14 @@ const Background = styled.div`
 /* Larger than Desktop HD */
 
 @media (min-width: 1200px) {
-    #recipeImg {
+    #addImg {
             background-size: 700px;
           
         }
 }
 
 @media (min-width: 1900px) {
-    #recipeImg {
+    #addImg {
             background-size: 1000px;
         }
 }

@@ -130,7 +130,14 @@ const DashboardDiv = styled.div`
     .listUnit {
         color: black;
     }
+    @media (max-width: 800px) {
+        #list {
+            width: 90vw;
+            left: 0;
+        }
+    }
     `
+
 const Dashboard = (props) => {
     const { fetchData } = props;
     useEffect(() => {
