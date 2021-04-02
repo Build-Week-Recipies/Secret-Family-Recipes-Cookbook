@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import NavBar from './NavBar';
 import { useHistory } from 'react-router';
 import { axiosWithAuth } from '../helper/axiosWithAuth';
+import { connect } from 'react-redux';
 
 
 const Background = styled.div`
@@ -149,7 +150,8 @@ const AddDiv = styled.div`
 }
 `;
 
-const Add = () => {
+const Add = (props) => {
+
 
     const initialValues = {
         title: '',
@@ -171,8 +173,9 @@ const Add = () => {
     const addHandler = e => {
         e.preventDefault();
         // axios call to add a new item
+        console.log('starting');
         axiosWithAuth()
-            .post("/recipe/1", newRecipe)
+            .post("https://secret-family-recipes2021.herokuapp.com/api/recipes", newRecipe)
             .then((res) => {
                 console.log(res.data);
                 setRecipe(initialValues)
