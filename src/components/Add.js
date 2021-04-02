@@ -149,7 +149,7 @@ const AddDiv = styled.div`
 }
 `;
 
-const Add = (props) => {
+const Add = () => {
 
 
     const initialValues = {
@@ -158,7 +158,6 @@ const Add = (props) => {
         ingredients: '',
         instructions: '',
         category: '',
-        creator_id: 1
     }
     const [newRecipe, setRecipe] = useState(initialValues);
 
