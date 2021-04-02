@@ -41,7 +41,6 @@ const RecipeList = (props) => {
 
     const handleSearch = (e) => {
         e.preventDefault()
-        console.log(search)
         let regex = new RegExp(search, "i", "U")
         setRecipesList(
             search ? recipesList.filter(recipe => regex.test(recipe.title)) : recipes
@@ -50,7 +49,6 @@ const RecipeList = (props) => {
 
     const handleChange = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
         setSearch(e.target.value)
     }
 
