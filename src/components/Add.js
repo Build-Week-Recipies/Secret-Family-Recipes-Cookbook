@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import NavBar from './NavBar';
 import { useHistory } from 'react-router';
 import { axiosWithAuth } from '../helper/axiosWithAuth';
-import { connect } from 'react-redux';
 
 
 const Background = styled.div`
