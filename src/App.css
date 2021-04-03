@@ -162,8 +162,8 @@ nav {
 
 .nav-links li {
   list-style: none;
-  opacity: 0;
   display: inline;
+  opacity: 0;
   max-width: 100%;
   overflow-wrap: break-word;
 }
@@ -220,7 +220,7 @@ nav {
 
 /* Larger than desktop */
 
-@media (min-width: 1024px) {
+@media (min-width: 800px) {
   .nav-links {
     display: flex;
     width: 11vw;
@@ -231,10 +231,6 @@ nav {
     height: 92vh;
     top: 8vh;
     font-size: 1.2rem;
-    flex-direction: column;
-    align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in;
   }
 }
 
