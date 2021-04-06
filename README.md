@@ -23,3 +23,6 @@ RECIPES
 **   (POST) /api/recipes (add recipe)  
 **   (PUT) /api/recipes:id (edit recipe)  
 **   (DELETE) /api/recipes/:id (delete recipe by id)
+
+///LIVE APP///
+Deployed on NETLIFY APP: https://build-week-recipes.netlify.app/
