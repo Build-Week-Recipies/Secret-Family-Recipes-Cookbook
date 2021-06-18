@@ -3,8 +3,8 @@ The little cards my grandma wrote the recipes on in her beautiful cursive are ge
 
 * Be sure to install dependencies with 'npm install', then launch with 'npm start'
 
-* Unit 3 - Jonathan Calderon, Nicholas Samples
-* Unit 4 - Francis Bonacic
+* Unit 3 (Frontend) - Jonathan Calderon, Nicholas Samples
+* Unit 4 (Backend) - Francis Bonacic
 
 ///END POINTS /// 
 
